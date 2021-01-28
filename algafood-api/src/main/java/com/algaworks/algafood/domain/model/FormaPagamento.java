@@ -15,16 +15,14 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cozinha implements Serializable {
+public class FormaPagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	
+    
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)
-	private String nome;
-	
+	private String descricao;
 }

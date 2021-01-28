@@ -15,9 +15,9 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cozinha implements Serializable {
+public class Permissao implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
-
 	
 	@EqualsAndHashCode.Include
 	@Id
@@ -26,5 +26,8 @@ public class Cozinha implements Serializable {
 	
 	@Column(nullable = false)
 	private String nome;
+	
+	@Column(nullable = false)
+	private String descricao;
 	
 }

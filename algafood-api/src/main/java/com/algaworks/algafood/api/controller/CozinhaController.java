@@ -3,7 +3,9 @@ package com.algaworks.algafood.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,12 @@ public class CozinhaController {
 	}
 	
 	@GetMapping("/{cozinhaId}")
-	public Cozinha buscarPorId(@PathVariable Long cozinhaId) {
-		return repository.buscarPorId(cozinhaId);
+	public ResponseEntity<Cozinha> buscarPorId(@PathVariable Long cozinhaId) {
+		Cozinha cozinha = repository.buscarPorId(cozinhaId);
+		
+		if(cozinha != null) {
+			return ResponseEntity.ok(cozinha);
+		}		
+		return ResponseEntity.notFound().build();
 	}
 }

@@ -9,7 +9,7 @@ public interface  CozinhaRepository {
 
 	public Cozinha salvar(Cozinha entity); 
 	public Cozinha buscarPorId(Long id);
-	public void remover(Cozinha entity);
+	public void remover(Long id);
 	public List<Cozinha> listar();
 	
 }

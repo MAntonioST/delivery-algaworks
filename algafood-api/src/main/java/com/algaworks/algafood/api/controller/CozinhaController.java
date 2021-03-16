@@ -40,7 +40,7 @@ public class CozinhaController {
 	
 	
 	@GetMapping("/{cozinhaId}")
-	public ResponseEntity<Cozinha> buscarPorId(@PathVariable Long cozinhaId) {
+	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
 		Cozinha cozinha = repository.buscarPorId(cozinhaId);
 		
 		if(cozinha != null) {

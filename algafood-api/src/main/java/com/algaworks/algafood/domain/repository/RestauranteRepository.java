@@ -10,7 +10,7 @@ public interface  RestauranteRepository {
 
 	public Restaurante salvar(Restaurante entity); 
 	public Restaurante buscarPorId(Long id);
-	public void remover(Restaurante entity);
+	public void remover(Long id);
 	public List<Restaurante> todas();
 	
 }

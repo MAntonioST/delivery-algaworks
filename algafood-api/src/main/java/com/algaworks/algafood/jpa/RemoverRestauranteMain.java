@@ -21,7 +21,7 @@ public class RemoverRestauranteMain {
 		Restaurante restaurante = new Restaurante();
 		restaurante.setId(1L);
 								
-		repository.remover(restaurante);
+		repository.remover(restaurante.getId());
 	
 		
 	}

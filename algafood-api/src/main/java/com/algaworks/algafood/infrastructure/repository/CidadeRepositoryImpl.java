@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
@@ -29,14 +31,17 @@ public class CidadeRepositoryImpl implements CidadeRepository {
 
 	@Transactional
 	@Override
-	public void remover(Cidade entity) {
-		entity = buscarPorId(entity.getId());
+	public void remover(Long id) {
+		Cidade entity = buscarPorId(id);
+		if(entity== null) {
+			  throw new EmptyResultDataAccessException(1);
+			}
 		manager.remove(entity);
 		
 	}
 
 	@Override
-	public List<Cidade> todas() {
+	public List<Cidade> listar() {
 	  return manager
 		    .createQuery("from Cidade", Cidade.class)
 		    .getResultList();

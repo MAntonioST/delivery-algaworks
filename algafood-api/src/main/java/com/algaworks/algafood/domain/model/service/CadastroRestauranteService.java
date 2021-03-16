@@ -1,5 +1,7 @@
 package com.algaworks.algafood.domain.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -33,6 +35,16 @@ public class CadastroRestauranteService {
 		restaurante.setCozinha(cozinha);
 		return restauranteRepository.salvar(restaurante);
 	}
+	
+	public List<Restaurante> listar() {
+		return restauranteRepository.listar();
+	}
+
+
+
+	public Restaurante buscarPorId(Long restauranteId) {
+		return restauranteRepository.buscarPorId(restauranteId);
+	}
 
 	
 	
@@ -51,4 +63,5 @@ public class CadastroRestauranteService {
 
 		}
 	}
+
 }

@@ -20,7 +20,7 @@ public class ConsultaRestauranteMain {
 		
 		RestauranteRepository repository = applicationContext.getBean(RestauranteRepository.class);
 		
-		List<Restaurante> restaurantes = repository.todas();
+		List<Restaurante> restaurantes = repository.listar();
 		for(Restaurante restaurante : restaurantes) {
 			System.out.println("Restaurante :" + restaurante.getNome() + " - " + "Cozinha :" + restaurante.getCozinha().getNome());
 		}

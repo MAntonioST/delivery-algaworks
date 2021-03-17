@@ -33,17 +33,19 @@ public class CadastroCidadeService {
 					String.format("Não existe cadastro de Estado com código %d", estadoId));
 		}
 		cidade.setEstado(estado);
-		return cidadeRepository.salvar(cidade);
+		return cidadeRepository.save(cidade);
 	}
 	
 	public List<Cidade> listar() {
-		return cidadeRepository.listar();
+		return cidadeRepository.findAll();
 	}
 
 
 
 	public Cidade buscarPorId(Long cidadeId) {
-		return cidadeRepository.buscarPorId(cidadeId);
+		return cidadeRepository.findById(cidadeId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(
+						   String.format("Não existe um cadastro de Cidade com código %d", cidadeId)));
 	}
 
 	
@@ -51,7 +53,7 @@ public class CadastroCidadeService {
 	public void excluir(Long cidadeId) {
 
 		try {
-			cidadeRepository.remover(cidadeId);
+			cidadeRepository.deleteById(cidadeId);
 			
 		}catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(

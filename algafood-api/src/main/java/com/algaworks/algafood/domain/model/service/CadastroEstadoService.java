@@ -21,17 +21,19 @@ public class CadastroEstadoService {
 	
 	public Estado salvar(Estado estado) {
 		
-		return estadoRepository.salvar(estado);
+		return estadoRepository.save(estado);
 	}
 	
 	public List<Estado> listar() {
-		return estadoRepository.listar();
+		return estadoRepository.findAll();
 	}
 
 
 
 	public Estado buscarPorId(Long estadoId) {
-		return estadoRepository.buscarPorId(estadoId);
+		return estadoRepository.findById(estadoId)
+				.orElseThrow(()-> new EntidadeNaoEncontradaException(
+						   String.format("Não existe um cadastro de Estado com código %d", estadoId)));
 	}
 
 	
@@ -39,7 +41,7 @@ public class CadastroEstadoService {
 	public void excluir(Long estadoId) {
 
 		try {
-			estadoRepository.remover(estadoId);
+			estadoRepository.deleteById(estadoId);
 			
 		}catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(

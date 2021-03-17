@@ -1,16 +1,12 @@
 package com.algaworks.algafood.domain.repository;
 
-import java.util.List;
 
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import com.algaworks.algafood.domain.model.Restaurante;
 
+@Repository
+public interface  RestauranteRepository extends JpaRepository<Restaurante, Long> {
 
-public interface  RestauranteRepository {
-
-	public Restaurante salvar(Restaurante entity); 
-	public Restaurante buscarPorId(Long id);
-	public void remover(Long id);
-	public List<Restaurante> listar();
 	
 }

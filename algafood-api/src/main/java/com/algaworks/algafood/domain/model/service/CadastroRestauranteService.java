@@ -32,17 +32,19 @@ public class CadastroRestauranteService {
 						String.format("Não existe cadastro de cozinha com código %d", cozinhaId)));
 
 		restaurante.setCozinha(cozinha);
-		return restauranteRepository.salvar(restaurante);
+		return restauranteRepository.save(restaurante);
 	}
 	
 	public List<Restaurante> listar() {
-		return restauranteRepository.listar();
+		return restauranteRepository.findAll();
 	}
 
 
 
 	public Restaurante buscarPorId(Long restauranteId) {
-		return restauranteRepository.buscarPorId(restauranteId);
+		return restauranteRepository.findById(restauranteId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(
+						   String.format("Não existe um cadastro de Restaurante com código %d", restauranteId)));
 	}
 
 	
@@ -50,7 +52,7 @@ public class CadastroRestauranteService {
 	public void excluir(Long restauranteId) {
 
 		try {
-			restauranteRepository.remover(restauranteId);
+			restauranteRepository.deleteById(restauranteId);
 			
 		}catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(

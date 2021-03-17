@@ -26,12 +26,10 @@ public class CadastroCidadeService {
 
 	public Cidade salvar(Cidade cidade) {
 		Long estadoId = cidade.getEstado().getId();
-		Estado estado = estadoRepository.buscarPorId(estadoId);
+		Estado estado = estadoRepository.findById(estadoId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(
+						String.format("Não existe cadastro de Estado com código %d", estadoId)));
 		
-		if(estado == null) {
-			throw new EntidadeNaoEncontradaException(
-					String.format("Não existe cadastro de Estado com código %d", estadoId));
-		}
 		cidade.setEstado(estado);
 		return cidadeRepository.save(cidade);
 	}

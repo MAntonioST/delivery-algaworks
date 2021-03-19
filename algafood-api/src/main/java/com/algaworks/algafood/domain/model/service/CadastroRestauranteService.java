@@ -44,7 +44,7 @@ public class CadastroRestauranteService {
 	public Restaurante buscarPorId(Long restauranteId) {
 		return restauranteRepository.findById(restauranteId)
 				.orElseThrow(() -> new EntidadeNaoEncontradaException(
-						   String.format("Não existe um cadastro de Restaurante com código %d", restauranteId)));
+						   String.format("Não existe um cadastro de restaurante com código %d", restauranteId)));
 	}
 
 	

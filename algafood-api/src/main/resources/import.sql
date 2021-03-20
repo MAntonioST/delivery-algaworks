@@ -1,25 +1,25 @@
-INSERT INTO cozinha(id, nome) VALUES(1,'Tailandesa');
-INSERT INTO cozinha(id, nome) VALUES(2,'Indiana');
+insert into cozinha (id, nome) values (1, 'Tailandesa');
+insert into cozinha (id, nome) values (2, 'Indiana');
 
+insert into restaurante (id, nome, taxa_frete, cozinha_id) values (1, 'Thai Gourmet', 10, 1);
+insert into restaurante (id, nome, taxa_frete, cozinha_id) values (2, 'Thai Delivery', 9.50, 1);
+insert into restaurante (id, nome, taxa_frete, cozinha_id) values (3, 'Tuk Tuk Comida Indiana', 15, 2);
 
-INSERT INTO restaurante(nome, taxa_frete, cozinha_id) VALUES('Thai Gourmet', 10, 1);
-INSERT INTO restaurante(nome, taxa_frete, cozinha_id) VALUES('Thai Delivery', 9.50, 1);
-INSERT INTO restaurante(nome, taxa_frete, cozinha_id) VALUES('Tuk Tuk Comida Indiana', 15, 2);
+insert into estado (id, nome) values (1, 'Minas Gerais');
+insert into estado (id, nome) values (2, 'São Paulo');
+insert into estado (id, nome) values (3, 'Ceará');
 
-INSERT INTO forma_pagamento (descricao) VALUES('Cartão');
-INSERT INTO forma_pagamento (descricao) VALUES('Boleto');
-INSERT INTO forma_pagamento (descricao) VALUES('Pix');
+insert into cidade (id, nome, estado_id) values (1, 'Uberlândia', 1);
+insert into cidade (id, nome, estado_id) values (2, 'Belo Horizonte', 1);
+insert into cidade (id, nome, estado_id) values (3, 'São Paulo', 2);
+insert into cidade (id, nome, estado_id) values (4, 'Campinas', 2);
+insert into cidade (id, nome, estado_id) values (5, 'Fortaleza', 3);
 
+insert into forma_pagamento (id, descricao) values (1, 'Cartão de crédito');
+insert into forma_pagamento (id, descricao) values (2, 'Cartão de débito');
+insert into forma_pagamento (id, descricao) values (3, 'Dinheiro');
 
-INSERT INTO permissao (descricao, nome) VALUES('Permite consultar produtos  dos restaurantes','Consultar produtos');
-INSERT INTO permissao (descricao, nome) VALUES('Permite inserir produtos  para os restaurantes','Inserir produtos');
+insert into permissao (id, nome, descricao) values (1, 'CONSULTAR_COZINHAS', 'Permite consultar cozinhas');
+insert into permissao (id, nome, descricao) values (2, 'EDITAR_COZINHAS', 'Permite editar cozinhas');
 
-
-INSERT INTO estado (id,nome) VALUES(1,'São Paulo');
-INSERT INTO estado (id,nome) VALUES(2,'Rio de Janeiro');
-
-
-INSERT INTO cidade (nome, estado_id) VALUES('Mogi das Cruzes', 1);
-INSERT INTO cidade (nome, estado_id) VALUES('Volta Redonda', 2);
-
-
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1, 1), (1, 2), (1, 3), (2, 3), (3, 2), (3, 3);

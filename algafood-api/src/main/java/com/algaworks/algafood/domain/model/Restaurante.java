@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Restaurante {
+public class Restaurante implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@EqualsAndHashCode.Include
 	@Id
